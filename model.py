@@ -7,16 +7,16 @@ from preprocess import clean_input
 load_dotenv()
 
 HF_API_URL = "https://api-inference.huggingface.co/models/google/flan-t5-base"
-HF_TOKEN = os.getenv("HF_TOKEN")
 
 def analyze_medical_input(text: str, input_type: str) -> str:
-    if not HF_TOKEN or HF_TOKEN == "your_huggingface_token_here":
+    hf_token = os.environ.get("HF_TOKEN")
+    if not hf_token or hf_token == "your_huggingface_token_here":
         return "1. Key Findings\nHugging Face Token missing.\n\n2. Simplified Summary\nPlease add HF_TOKEN to your .env file or Render dashboard.\n\n3. Suggested Next Steps\nUpdate credentials and try again."
         
     cleaned_text = clean_input(text)
     formatted_prompt = format_prompt(cleaned_text, input_type)
     
-    headers = {"Authorization": f"Bearer {HF_TOKEN}"}
+    headers = {"Authorization": f"Bearer {hf_token}"}
     payload = {
         "inputs": formatted_prompt,
         "parameters": {
