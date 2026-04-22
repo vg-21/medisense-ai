@@ -9,9 +9,9 @@ load_dotenv()
 HF_API_URL = "https://api-inference.huggingface.co/models/google/flan-t5-base"
 
 def analyze_medical_input(text: str, input_type: str) -> str:
-    hf_token = os.environ.get("HF_TOKEN")
+    hf_token = os.environ.get("HUGGINGFACE_API_TOKEN")
     if not hf_token or hf_token == "your_huggingface_token_here":
-        return "1. Key Findings\nHugging Face Token missing.\n\n2. Simplified Summary\nPlease add HF_TOKEN to your .env file or Render dashboard.\n\n3. Suggested Next Steps\nUpdate credentials and try again."
+        return "1. Key Findings\nHugging Face Token missing.\n\n2. Simplified Summary\nPlease add HUGGINGFACE_API_TOKEN to your .env file or Render dashboard.\n\n3. Suggested Next Steps\nUpdate credentials and try again."
         
     cleaned_text = clean_input(text)
     formatted_prompt = format_prompt(cleaned_text, input_type)
