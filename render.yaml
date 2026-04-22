@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: medisense-ai
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app.py
+    envVars:
+      - key: SUPABASE_URL
+        value: https://djhheofmxwnwoimmsnqi.supabase.co
+      - key: SUPABASE_KEY
+        value: sb_publishable_ILOV0mBIWB4G4V1wV6jCKA_e6QVHELx
