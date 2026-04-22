@@ -1,3 +1,4 @@
+import os
 import gradio as gr
 from model import analyze_medical_input
 import html
@@ -991,4 +992,7 @@ with gr.Blocks(css=custom_css, title="MediSense AI") as demo:
     )
 
 if __name__ == "__main__":
-    demo.launch(server_name="0.0.0.0", server_port=10000)
+    demo.launch(
+        server_name="0.0.0.0",
+        server_port=int(os.environ.get("PORT", 7860))
+    )
