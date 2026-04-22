@@ -1,7 +1,4 @@
-transformers
+requests
 gradio
-torch
-sentencepiece
-accelerate
 supabase
 python-dotenv
