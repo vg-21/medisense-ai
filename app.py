@@ -677,7 +677,7 @@ def finish_analysis(text, input_type):
         gr.update(value=history_html)
     ]
 
-with gr.Blocks(css=custom_css, title="MediSense AI") as demo:
+with gr.Blocks(title="MediSense AI") as demo:
     # --- SCREEN 1: LANDING ---
     with gr.Column(visible=True, elem_classes="landing-container") as landing_screen:
         gr.HTML('''
@@ -993,6 +993,7 @@ with gr.Blocks(css=custom_css, title="MediSense AI") as demo:
 
 if __name__ == "__main__":
     demo.launch(
+        css=custom_css,
         server_name="0.0.0.0",
         server_port=int(os.environ.get("PORT", 7860))
     )
